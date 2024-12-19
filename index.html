@@ -73,6 +73,13 @@
             font-weight: bold;
             color: #333;
         }
+
+        /* Error message styling */
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -81,7 +88,7 @@
         <p>Answer how drunk you'd like to get, and we'll calculate how much you'll need to drink based on who is hanging out.</p>
         
         <!-- Who is hanging out dropdown (multiple selection enabled) -->
-        <label for="friends">Who is hanging out?</label>
+        <label for="friends">Who is hanging out? (Select 1 to 3 people)</label>
         <select id="friends" multiple>
             <option value="Seth">Seth</option>
             <option value="Sven">Sven</option>
@@ -105,6 +112,9 @@
         
         <!-- Result display -->
         <h2 id="result"></h2>
+
+        <!-- Error message -->
+        <p id="error-message" class="error" style="display:none;"></p>
     </div>
 
     <script>
@@ -114,24 +124,30 @@
             const drunkLevelSelect = document.getElementById('drunkLevel');
             const loadingDiv = document.getElementById('loading');
             const resultDiv = document.getElementById('result');
+            const errorMessageDiv = document.getElementById('error-message');
 
             // Get selected friends (multiple selections)
             const selectedFriends = Array.from(friendsSelect.selectedOptions).map(option => option.value);
             const drunkLevel = parseInt(drunkLevelSelect.value);
 
+            // Reset result and error message
+            resultDiv.textContent = '';
+            errorMessageDiv.style.display = 'none';
+
             // Show loading animation
             loadingDiv.style.display = 'block';
-            resultDiv.textContent = ''; // Clear any previous results
+
+            // Check if the number of selected friends is between 1 and 3
+            if (selectedFriends.length < 1 || selectedFriends.length > 3) {
+                // If not, show an error message and stop the calculation
+                loadingDiv.style.display = 'none';
+                errorMessageDiv.textContent = 'Please select between 1 and 3 friends!';
+                errorMessageDiv.style.display = 'block';
+                return;
+            }
 
             // Fake calculation based on selected friends and drunk level
             setTimeout(() => {
-                // If no friends are selected, show a message and return early
-                if (selectedFriends.length === 0) {
-                    loadingDiv.style.display = 'none';
-                    resultDiv.textContent = 'Please select at least one friend!';
-                    return;
-                }
-
                 const numberOfFriends = selectedFriends.length;
                 const bottlesNeeded = numberOfFriends * drunkLevel * 0.5; // A basic formula for bottles (this can be adjusted)
 
@@ -145,5 +161,3 @@
     </script>
 </body>
 </html>
-
-
