@@ -9,12 +9,9 @@
 <body>
     <div class="container">
         <h1>Alcohol Calculator for a Night Out</h1>
-        <p>Use this to figure out how much each person needs to drink to reach the desired drunkenness level.</p>
+        <p>Answer how drunk you'd like to get, and we'll calculate how much you'll need to drink for the night.</p>
         
-        <label for="numFriends">How many friends are hanging out?</label>
-        <input type="number" id="numFriends" placeholder="Enter number of friends" min="1" />
-        
-        <label for="drunkLevel">How drunk do you want to get?</label>
+        <label for="drunkLevel">How drunk would you like to get?</label>
         <select id="drunkLevel">
             <option value="1">Not too drunk (1)</option>
             <option value="2">Buzzed (2)</option>
@@ -22,7 +19,10 @@
             <option value="4">Drunk (4)</option>
             <option value="5">Very Drunk (5)</option>
         </select>
-
+        
+        <label for="numFriends">How many friends are hanging out?</label>
+        <input type="number" id="numFriends" placeholder="Enter number of friends" min="1" />
+        
         <button onclick="calculateBottles()">Calculate Bottles</button>
         
         <div id="loading" class="loading" style="display:none;">Calculating...</div>
