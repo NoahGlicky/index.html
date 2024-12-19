@@ -4,7 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alcohol Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Loading animation */
+        .loading {
+            font-size: 20px;
+            color: #ff6600;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Result styling */
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -38,34 +107,35 @@
         <h2 id="result"></h2>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function calculateBottles() {
+            // Get the selected friends and drunk level
+            const friendsSelect = document.getElementById('friends');
+            const drunkLevelSelect = document.getElementById('drunkLevel');
+            const loadingDiv = document.getElementById('loading');
+            const resultDiv = document.getElementById('result');
+
+            // Get selected friends (multiple)
+            const selectedFriends = Array.from(friendsSelect.selectedOptions).map(option => option.value);
+            const drunkLevel = parseInt(drunkLevelSelect.value);
+
+            // Show loading animation
+            loadingDiv.style.display = 'block';
+            resultDiv.textContent = ''; // Clear any previous results
+
+            // Fake calculation based on selected friends and drunk level
+            setTimeout(() => {
+                const numberOfFriends = selectedFriends.length;
+                const bottlesNeeded = numberOfFriends * drunkLevel * 0.5; // A basic formula for bottles (this can be adjusted)
+
+                // Hide loading animation
+                loadingDiv.style.display = 'none';
+
+                // Show the result
+                resultDiv.textContent = `You will need approximately ${bottlesNeeded.toFixed(2)} bottles for ${selectedFriends.join(', ')} at drunk level ${drunkLevel}.`;
+            }, 2000); // Simulate a 2-second delay for the calculation
+        }
+    </script>
 </body>
 </html>
-function calculateBottles() {
-    // Get the selected friends and drunk level
-    const friendsSelect = document.getElementById('friends');
-    const drunkLevelSelect = document.getElementById('drunkLevel');
-    const loadingDiv = document.getElementById('loading');
-    const resultDiv = document.getElementById('result');
-
-    // Get selected friends (multiple)
-    const selectedFriends = Array.from(friendsSelect.selectedOptions).map(option => option.value);
-    const drunkLevel = parseInt(drunkLevelSelect.value);
-
-    // Show loading animation
-    loadingDiv.style.display = 'block';
-    resultDiv.textContent = ''; // Clear any previous results
-
-    // Fake calculation based on selected friends and drunk level
-    setTimeout(() => {
-        const numberOfFriends = selectedFriends.length;
-        const bottlesNeeded = numberOfFriends * drunkLevel * 0.5; // A basic formula for bottles (this can be adjusted)
-
-        // Hide loading animation
-        loadingDiv.style.display = 'none';
-
-        // Show the result
-        resultDiv.textContent = `You will need approximately ${bottlesNeeded.toFixed(2)} bottles for ${selectedFriends.join(', ')} at drunk level ${drunkLevel}.`;
-    }, 2000); // Simulate a 2-second delay for the calculation
-}
 
