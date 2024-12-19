@@ -9,11 +9,20 @@
 <body>
     <div class="container">
         <h1>Alcohol Calculator for a Night Out</h1>
-        <p>Use this to figure out how many bottles you’ll need for the night.</p>
+        <p>Use this to figure out how many bottles you'll need for the night based on how drunk you want to get.</p>
         
         <label for="numFriends">How many friends are hanging out?</label>
         <input type="number" id="numFriends" placeholder="Enter number of friends" min="1" />
         
+        <label for="drunkLevel">How drunk do you want to get?</label>
+        <select id="drunkLevel">
+            <option value="1">Not too drunk (1)</option>
+            <option value="2">Buzzed (2)</option>
+            <option value="3">Tipsy (3)</option>
+            <option value="4">Drunk (4)</option>
+            <option value="5">Very Drunk (5)</option>
+        </select>
+
         <button onclick="calculateBottles()">Calculate Bottles</button>
         
         <div id="loading" class="loading" style="display:none;">Calculating...</div>
@@ -23,3 +32,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
