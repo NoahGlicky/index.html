@@ -146,18 +146,4 @@
                 return;
             }
 
-            // Fake calculation based on selected friends and drunk level
-            setTimeout(() => {
-                const numberOfFriends = selectedFriends.length;
-                const bottlesNeeded = numberOfFriends * drunkLevel * 0.5; // A basic formula for bottles (this can be adjusted)
-
-                // Hide loading animation
-                loadingDiv.style.display = 'none';
-
-                // Show the result
-                resultDiv.textContent = `You will need approximately ${bottlesNeeded.toFixed(2)} bottles for ${selectedFriends.join(', ')} at drunk level ${drunkLevel}.`;
-            }, 2000); // Simulate a 2-second delay for the calculation
-        }
-    </script>
-</body>
-</html>
+ 
