@@ -11,6 +11,7 @@
         <h1>Alcohol Calculator for a Night Out</h1>
         <p>Answer how drunk you'd like to get, and we'll calculate how much you'll need to drink based on who is hanging out.</p>
         
+        <!-- Who is hanging out dropdown -->
         <label for="friends">Who is hanging out?</label>
         <select id="friends" multiple>
             <option value="Seth">Seth</option>
@@ -18,6 +19,7 @@
             <option value="Glicky">Glicky</option>
         </select>
         
+        <!-- How drunk do we want to get -->
         <label for="drunkLevel">How drunk would you like to get?</label>
         <select id="drunkLevel">
             <option value="1">Not too drunk (1)</option>
@@ -29,10 +31,14 @@
         
         <button onclick="calculateBottles()">Calculate Bottles</button>
         
+        <!-- Loading animation -->
         <div id="loading" class="loading" style="display:none;">Calculating...</div>
+        
+        <!-- Result display -->
         <h2 id="result"></h2>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
