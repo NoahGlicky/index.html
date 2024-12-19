@@ -115,7 +115,7 @@
             const loadingDiv = document.getElementById('loading');
             const resultDiv = document.getElementById('result');
 
-            // Get selected friends (multiple)
+            // Get selected friends (multiple selections)
             const selectedFriends = Array.from(friendsSelect.selectedOptions).map(option => option.value);
             const drunkLevel = parseInt(drunkLevelSelect.value);
 
@@ -125,6 +125,13 @@
 
             // Fake calculation based on selected friends and drunk level
             setTimeout(() => {
+                // If no friends are selected, show a message and return early
+                if (selectedFriends.length === 0) {
+                    loadingDiv.style.display = 'none';
+                    resultDiv.textContent = 'Please select at least one friend!';
+                    return;
+                }
+
                 const numberOfFriends = selectedFriends.length;
                 const bottlesNeeded = numberOfFriends * drunkLevel * 0.5; // A basic formula for bottles (this can be adjusted)
 
@@ -138,4 +145,5 @@
     </script>
 </body>
 </html>
+
 
