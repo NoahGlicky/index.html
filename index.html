@@ -146,4 +146,22 @@
                 return;
             }
 
- 
+            // Simulate calculation based on number of friends and drunk level
+            setTimeout(function() {
+                // Formula to calculate bottles (arbitrary values for this example)
+                const friendsCount = selectedFriends.length;
+                const baseBottles = 1.5;  // base bottles for one person to get a certain drunk level
+                const drunkFactor = drunkLevel * 0.75;  // factor that increases bottles needed
+
+                const totalBottles = (baseBottles * friendsCount * drunkFactor).toFixed(2);
+
+                // Show the result
+                resultDiv.textContent = `You will need approximately ${totalBottles} bottles to achieve the selected level of drunkenness with ${friendsCount} friends.`;
+
+                // Hide loading animation
+                loadingDiv.style.display = 'none';
+            }, 2000);  // Simulate a 2-second delay for calculation
+        }
+    </script>
+</body>
+</html>
